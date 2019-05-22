@@ -1,0 +1,181 @@
+include _mixins
+
+
+doctype html
+html(lang="en").no-js
+  head
+    +head
+  body
+
+    +menu(true, true)
+
+    
+    section.mainContainer
+      h2 Bienvenido, Nombre de Usuario
+      .pattern.p4: .grid-container
+        .grid-x.grid-padding-x.grid-margin-x#acceso
+          .cell
+            ul.tabs(data-tabs)#acceso-tabs
+              li.tabs-title.is-active: a(href="#datos-personales") Datos personales
+              li.tabs-title: a(href="#datos-cuenta") Datos de cuenta
+              li.tabs-title: a(href="#saldo-puntos") Saldo en puntos
+              //li.tabs-title: a(href="#datos-facturacion") Datos de facturación
+              li.tabs-title.reportebtn: a(href="#reporte") Reporte por robo o extravío
+            .tabs-content(data-tabs-content="acceso-tabs")
+              .tabs-panel.is-active#datos-personales
+                - var datos = ['Tarjeta Club Lumen', 'Nombre', 'Correo electrónico', 'Fecha de nacimiento', 'Sexo', 'Teléfonos', 'Celular', 'Compañía celular', 'Hijos', 'Ocupación', 'Tienda que frecuenta', 'Temas de interés']
+                - var direc = ['Calle', 'No. exterior', 'No. interior', 'C.P.', 'Estado', 'Municipio', 'Colonia']
+                .grid-x.grid-padding-x
+                  .cell.large-6
+                    h4 Usuario
+                    table
+                      each val in datos
+                        tr
+                          td=val
+                          td --
+                  .cell.large-6
+                    h4 Dirección
+                    table
+                      each val in direc
+                        tr
+                          td=val
+                          td --
+                    .text-right: button(type="button" data-open="registrar-tarjeta").button Actualizar datos
+                    +registrarTarjeta(true, 'Actualización de datos')
+
+
+              .tabs-panel#datos-cuenta
+                h4 Datos de acceso
+                .grid-x.grid-padding-x
+                  .cell.large-6.large-offset-3
+                    table
+                      tr
+                        td Usuario
+                        td --
+                      tr
+                        td Contraseña
+                        td *******
+                    .text-right: button(type="button" data-open="update-password").button Actualizar contraseña
+                    div.reveal(data-reveal)#update-password
+                      button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+                      h2 Actualizar contraseña
+                        form(action="#")
+                          input(type="password" placeholder="Contraseña actual" required)
+                          input(type="password" placeholder="Nueva contraseña" required)
+                          input(type="password" placeholder="Confirmar nueva contraseña" required)
+                          .grid-x
+                            .cell.medium-6.text-right: button(type="submit").button Actualizar
+
+              .tabs-panel#saldo-puntos
+                h4 Saldo en puntos
+                .grid-x.grid-padding-x
+                  .cell.large-3.text-right.large-offset-9
+                    label Periodo
+                      select
+                        option() Agosto, 2017
+                        option() Julio, 2017
+                        option() Junio, 2017
+                        option() Mayo, 2017
+                  .cell.large-6.large-offset-3
+                    .callout.primary.text-center
+                      h4 Saldo en Puntos al día de hoy: 0.00
+                    .grid-x.grid-padding-x
+                      .cell.large-6: h4 Puntos Acumulados: 0.00
+                      .cell.large-6: h4 Puntos Canjeados: 0.00
+                table.stack
+                  thead
+                    tr
+                      th Fecha
+                      th Sucursal
+                      th Ticket
+                      th Transacción
+                      th Puntos
+                      th Saldo
+                  tbody
+                    tr
+                      td 16/05/2019 12:14:48 p. m.
+                      td -
+                      td www.clublumen.com.mx	
+                      td REGISTRO DE DATOS
+                      td 0.00
+                      td 0.00
+
+                .text-right: button(type="button").button.secondary Imprimir
+              //.tabs-panel#datos-facturacion
+                h4 Datos de facturación
+                form
+                  .grid-x.grid-padding-x
+                    .cell.large-6
+                      fieldset.fieldset
+                        legend Información
+                        .grid-x
+                            .cell
+                              label Nombre o Razón social
+                              input(type="text")
+                            .cell
+                              label R.F.C.
+                              input(type="text")
+                            .cell
+                              label Correo electrónico
+                              input(type="email")
+                    .cell.large-6
+                      fieldset.fieldset
+                        legend Domicilio fiscal
+                        .grid-x
+                            .cell.small-6
+                                label Calle
+                                input(type="text")
+                            .cell.small-3
+                                label Número exterior
+                                input(type="text")
+                            .cell.small-3
+                                label Número interior
+                                input(type="text")
+
+                            .cell.small-6
+                                label Código postal
+                                input(type="text")
+                            .cell.small-6
+                                label Colonia
+                                input(type="text")
+                            .cell.small-6
+                                label Delegación o Municipio
+                                input(type="text")
+                            .cell.small-6
+                                label Ciudad
+                                input(type="text")
+                            .cell.small-6
+                                label Estado
+                                select
+                                    - var edos = ['AGUASCALIENTES','BAJA CALIFORNIA NORTE','BAJA CALIFORNIA SUR','COAHUILA','CHIHUAHUA','COLIMA','CAMPECHE','CHIAPAS','DISTRITO FEDERAL','DURANGO','GUERRERO','GUANAJUATO','HIDALGO','JALISCO','MICHOACAN','MORELOS','MEXICO','NAYARIT','NUEVO LEON','OAXACA','PUEBLA','QUERETARO','QUINTANA ROO','SINALOA','SAN LUIS POTOSI','SONORA','TAMAULIPAS','TABASCO','TLAXCALA','VERACRUZ','YUCATAN','ZACATECAS']
+                                    each val in edos
+                                        option=val
+                    .cell.text-right
+                      button(type="submit").button Guardar
+              
+              .tabs-panel#reporte
+                h4 Reporte por robo o extravío
+                .grid-x
+                  .cell.large-6.large-offset-3
+                    .callout
+                      +roboextravio(true)
+
+
+
+  
+
+        
+
+    +suscribe
+    
+    +footer
+
+    +scripts
+
+
+
+    
+
+
+
+    

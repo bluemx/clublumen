@@ -1,0 +1,547 @@
+mixin head
+    meta(charset="UTF-8")
+    title ..:: Club Lumen ::..
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    
+    //link(rel="stylesheet", href="site/lib/foundation.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Condensed|Roboto+Slab")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css")
+
+    link(rel="stylesheet", href="site/style.css")
+    link(rel="icon" type="image/png" href="favicon.png")
+
+mixin menu(user, session)
+    - var absolute=""
+                - if(user){ absolute = "index.html"}
+    div(data-sticky-container)
+      div(data-sticky data-margin-top="0")
+        .title-bar(data-responsive-toggle="mainMenu", data-hide-for="large")#mainMenuResponsive
+          a(href="index.html").title-bar-title: img(src="site/img/club-lumen.svg").logo-img
+          button.menu-icon(type="button" data-toggle="mainMenu")
+        .top-bar.stacked#mainMenu
+            .menutopbar
+                ul.menu(data-smooth-scroll)
+                    li: a(href="index.html").logo.show-for-large: img(src="site/img/club-lumen.svg").logo-img
+            .top-bar-left
+                ul.menu(data-magellan data-smooth-scroll data-offset="280")
+                    li: a(href="https://www.lumen.com.mx/" target="_blank") Lumen
+                    li: a(href=absolute+"#que-es") ¿Qué es?
+                    li: a(href=absolute+"#activacion") Registro
+                    li: a(href=absolute+"#promociones") Promociones
+                    li: a(href=absolute+"#comprar-puntos") Comprar puntos
+                    li: a(href=absolute+"#certificado-de-regalo") Certificado de regalo
+                    li: a(href=absolute+"#contacto") Contacto
+                    - if(session)
+                        li: a(href="index.html") Cerrar sesión
+                    - else 
+                        li: a(href="#iniciar-sesion") Iniciar sesión
+           
+                
+
+mixin suscribe
+    .suscribe
+      .grid-container
+        .grid-x.grid-padding-x.grid-margin-x
+          .cell.medium-8.large-6.small-12
+            h4 Suscribirse al boletín electrónico
+            form(action="")
+              .grid-x
+                .cell.medium-5: input(type="text" placeholder="Nombre")
+                .cell.medium-5: input(type="email" placeholder="Correo electrónico")
+                .cell.medium-2: button(type="submit").button Suscribirse
+          .cell.medium-4.large-2.small-12
+            h4 Síguenos en
+              .social-icons
+                a(href="https://www.facebook.com/pages/Papeleria-Lumen/139533542747946?ref=ts&fref=ts" target="_blank"): i.fi-social-facebook
+                a(href="https://twitter.com/papelerialumen" target="_blank"): i.fi-social-twitter
+          .cell.medium-6.large-4.infobottom
+            p
+              | #[strong Correo:] info@clublumen.com.mx
+              br
+              | #[strong Tel:] 01-800-841-7500 / (55) 8164-7300
+              br
+              | Lunes a Viernes de 09:00 a.m. a 06:00 p.m. CDMX
+
+
+
+mixin scripts
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    
+    //script(src="site/lib/foundation.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/js/foundation.min.js")
+    script(src="site/lib/what-input.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js")
+    script(src="site/script.js")
+
+mixin registroExitoso
+    div.reveal#registro-exitoso(data-reveal)
+        button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+        h2 ¡Tu tarjeta se registró exitosamente!
+        p Revisa tu correo electrónico para verificar tu usuario y contraseña.
+        .text-center: a(href="acceso.html").button Ir a tu cuenta
+          
+mixin registrarTarjeta(user, titlw)
+    div.reveal#registrar-tarjeta(data-reveal)
+        button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+        if titlw
+            h2=titlw
+        else
+            h2 Registro de datos
+        form
+            fieldset.fieldset
+                legend Datos personales
+                .grid-x
+                    .cell.small-12.medium-4
+                        label Nombre(s)
+                        input(type="text")
+                    .cell.small-12.medium-4
+                        label Apellido Paterno
+                        input(type="text")
+                    .cell.small-12.medium-4
+                        label Apellido Materno
+                        input(type="text")
+                    .cell.small-6.medium-4
+                        p Sexo
+                        label Femenino 
+                            input(type="radio" name="sexo" id="sexo" value="f" checked)
+                        label Masculino 
+                            input(type="radio" name="sexo" id="sexo" value="m")
+                    .cell.small-6.medium-4
+                        label Fecha de nacimiento
+                        input(type="date", placeholder="dd/mm/aa")
+                    
+                    .cell.medium-4.small-12
+                        label Teléfono 1
+                        input(type="text")
+                    .cell.medium-4.small-12
+                        label Teléfono 2
+                        input(type="text")
+                    .cell.medium-4.small-12
+                        label Celular 044
+                        input(type="text" placeholder="")
+                    .cell.medium-4.small-12
+                        p Hijos
+                        label Sí 
+                            input(type="radio" name="hijos" id="hijos" value="si" checked)
+                        label No 
+                            input(type="radio" name="hijos" id="hijos" value="no")
+                    .cell.medium-4.small-12
+                        label Ocupación
+                        select
+                            - var ocu = ['Estudiante', 'Maestro', 'Diseñador', 'Ingeniero', 'Arquitecto', 'Artes plásticas', 'Profesionista', 'Impresor', 'Empresa', 'Negocio propio', 'Ama de casa']
+                            each val in ocu
+                                option=val
+                    .cell.medium-4.small-12
+                        label Tienda que frecuentas
+                        select
+                            - var tienda = ['Acueducto', 'Aguascalientes']
+                            each val in tienda
+                                option=val
+                    .cell.small-12
+                        p Selecciona de las siguientes opciones los temas que son de tu interés:
+                        - var temas = ['Arte', 'Adhesivos', 'Regalos', 'Dibujo', 'Papel', 'Escolar', 'Libros', 'Tecnología', 'Escritura', 'Contenedores', 'Manualidades', 'Envoltura', 'Oficina', 'Muebles', 'Didácticos', 'Productos ecológicos']
+                        .grid-x
+                            each val, indx in temas
+                                .cell.small-6
+                                    input(type="checkbox" id="temas-chbox_"+indx)
+                                    label(for="temas-chbox_"+indx)=val
+                                //.cell.small-4
+                                    label 
+                                    input(type="checkbox" value="#{val}")
+                                    | #{val}
+            fieldset.fieldset
+                legend Dirección
+                .grid-x
+                    .cell.medium-4.small-12
+                        label Calle
+                        input(type="text")
+                    .cell.medium-4.small-12
+                        label Número exterior
+                        input(type="text")
+                    .cell.medium-4.small-12
+                        label Número interior
+                        input(type="text")
+                    .cell.medium-6.small-12
+                        label Código postal
+                        input(type="text")
+                    .cell.medium-6.small-12
+                        label Estado
+                        select
+                            - var edos = ['AGUASCALIENTES','BAJA CALIFORNIA NORTE','BAJA CALIFORNIA SUR','COAHUILA','CHIHUAHUA','COLIMA','CAMPECHE','CHIAPAS','DISTRITO FEDERAL','DURANGO','GUERRERO','GUANAJUATO','HIDALGO','JALISCO','MICHOACAN','MORELOS','MEXICO','NAYARIT','NUEVO LEON','OAXACA','PUEBLA','QUERETARO','QUINTANA ROO','SINALOA','SAN LUIS POTOSI','SONORA','TAMAULIPAS','TABASCO','TLAXCALA','VERACRUZ','YUCATAN','ZACATECAS']
+                            each val in edos
+                                option=val
+                    .cell.small-6
+                        label Municipio
+                        input(type="text")
+                    .cell.small-6
+                        label Colonia
+                        input(type="text")
+            fieldset.fieldset
+                legend Datos de la cuenta
+                .grid-x
+                    .cell.small-12
+                        label Usuario
+                        input(type="text")
+                    .cell.medium-6.small-12
+                        label Contraseña
+                        input(type="password")
+                    .cell.medium-6.small-12
+                        label Confirmar contraseña
+                        input(type="password")
+                    .cell.medium-6.small-12
+                        label E-mail
+                        input(type="email")
+                    .cell.medium-6.small-12
+                        label Confirmar E-mail
+                        input(type="email")
+                    .cell
+                        label
+                        input(type="checkbox")
+                        |  He leído y estoy de acuerdo con los términos y condiciones y el aviso de privacidad 
+            
+                    .cell.small-12.text-right
+                        button(type="button" data-open="registrar-resultado").button Siguiente
+                    
+    div.reveal(data-reveal)#registrar-resultado
+        button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+        - if(user)
+            h2 Datos actualizados
+            p Sus datos han sido actualizados correctamente
+        - else
+            h2 Registro exitoso
+            p Ha sido registrado.
+        .text-center
+        a(href="acceso.html").button Iniciar sesión
+
+
+
+mixin terminosycondiciones
+    p: strong Introducción
+    p I.- Operadora ROFERI, S.A. de C.V. ha celebrado un acuerdo comercial y de prestación de servicios con Abastecedora Lumen, S.A. de C.V. (Lumen) en virtud del cual aquella administra, desarrolla, opera y comercializa via telefónica y por internet por cuenta de Abastecedora Lumen S.A. DE C.V.: a) el programa de lealtad Lumen (Club Lumen); b) el programa de Puntos Lumen; y c) los certificados de regalo canjeables por determinados bienes y servicios ofrecidos por Lumen.
+    p II.- En ese entendido, Operadora ROFERI, S.A. de C.V. administra tanto el proceso de afiliación de los miembros del programa Club Lumen, así como la plataforma de servicios que permite: a) obtener y disfrutar los beneficios de dicho programa; b) la acumulación y canje de Puntos Lumen; y c) la activación y canje de Certificados de Regalo Lumen.
+    p III.-Asimismo, Operadora ROFERI, S.A. de C.V. administra con recursos propios y de terceros la página de internet 
+        a(href='www.clublumen.com.mx', target='_blank') www.clublumen.com.mx
+        |  y los servicios de venta por teléfono a través de los cuales se realizan las operaciones mencionadas en los Puntos I y II anteriores.
+    p Por ello, Operadora ROFERI, S.A. de C.V. celebra las operaciones mencionadas con los usuarios como entidad independiente de Abastecedora Lumen, S.A. de C.V., en base a los lineamientos definidos por Abastecedora Lumen S.A. de C.V. y de acuerdo al contrato de prestación de servicios suscrito con Abastecedora Lumen S.A. de C.V.
+    p Definiciones para Club Lumen los términos establecidos a continuación tendrán los siguientes significados: 
+    p: strong Términos y Condiciones de Club Lumen:
+    p Son las normas, reglas y políticas conforme a las cuales se opera y administra Club Lumen, siendo susceptibles de ser modificadas sin previo aviso de tiempo. En dichos Términos y Condiciones contenidas en el presente documento o en las versiones subsecuentes de los mismos, estando vigentes la última versión de los mismos y a los cuales los Socios de Club Lumen en tal carácter se sujetan y obligan a cumplir, en virtud del acto de tramitar su inscripción a Club Lumen.  
+    p: strong Club Lumen:
+    p Es el Programa Comercial de Lealtad Lumen operado y administrado por Operadora ROFERI, S.A. de C.V. (Blue) para favorecer a los clientes asiduos de Lumen, mediante el cual las personas inscritas al mismo acumulan créditos en Puntos Lumen en su Cuenta Club Lumen, por la adquisición y/o uso de determinados bienes y servicios mismos que podrán variar de tiempo en tiempo sin previo aviso. Tal acumulación se realiza de acuerdo a los Términos y Condiciones de Club Lumen por los Beneficios establecidos para tal efecto. Los Socios de Club Lumen gozarán de elegibilidad para recibir dichos Beneficios. A Club Lumen en lo sucesivo y para efectos del presente documento se le denominará indistintamente como Club Lumen o como El Programa.
+    p: strong Miembro o Socio Club Lumen:
+    p Es la Persona inscrita a Club Lumen, conforme a cualquiera de los mecanismos establecidos para tal efecto. Al Miembro o Socio Club Lumen en lo sucesivo y para efectos del presente documento se le denominará indistintamente como Miembro o Socio.
+    p: strong Tarjeta Club Lumen:
+    p Es la tarjeta expedida por Abastecedora Lumen, S.A. de C.V. a favor de cada Socio Club Lumen, mediante la cual se le acredita como Socio de Club Lumen conforme a los Términos y Condiciones de Club Lumen. Cada tarjeta contiene un Número de Cuenta Club Lumen, dicha Tarjeta es intransferible y deberá de presentarse necesariamente por el Socio Club Lumen para la realización de cualquier trámite respecto a Club Lumen. Las tarjetas Club Lumen podrán ser retiradas en cualquier momento. Asimismo, Abastecedora Lumen, S.A. de C.V. se reserva el derecho de cancelar o modificar parcial o totalmente el programa sin previo aviso.
+    p: strong Cuenta Club Lumen:
+    p Es la cuenta individual que asigna Lumen a cada Socio Club Lumen, en la cual se acumularán los Puntos Lumen a que tiene derecho el Socio Club Lumen
+    p: strong Puntos Lumen:
+    p Es la denominación que se da a los créditos que, conforme a los Términos y Condiciones de Club Lumen, se otorgan a los Socios Club Lumen y se acumulan en su Cuenta Club Lumen por la adquisición y/o uso de determinados bienes y/o servicios ofrecidos por Lumen. A los Puntos Lumen en lo sucesivo y para efectos de este documento se le denominará indistintamente como Puntos Lumen o como Puntos.
+    p: strong Certificado de Regalo Lumen:
+    p Es la tarjeta expedida por Abastecedora Lumen, S.A. de C.V. que podrá ser utilizada como forma de pago por productos y servicios determinados ofrecidos por Lumen dependiendo del saldo en dinero que el cliente haya adquirido para éste.
+    p: strong Transacción Autorizada:
+    p Es la compra llevada a cabo por los Socios de Club Lumen, de los servicios o bienes determinados por Lumen con una forma de Pago Válida para la Acumulación de Puntos Lumen conforme a los Términos y Condiciones vigentes de El Programa.
+    p: strong Formas de Pago Válidas para la Acumulación de Puntos Lumen:
+    p Son las formas de pago autorizadas por Lumen para la acumulación de Puntos Lumen siendo al momento el dinero en efectivo y las Tarjetas bancarias de crédito y débito aceptadas por Lumen. Abastecedora Lumen, S.A. de C.V. tiene el derecho de modificar las Formas de Pago Válidas de tiempo en tiempo y sin previo aviso.
+    p: strong Bono Adicional de Acumulación:
+    p Son los Puntos Lumen adicionales que se acumulan en la Cuenta Club Lumen del Socio por la adquisición y/o utilización llevada a cabo por los Socios, de determinados bienes y/o servicios. Dicho Bono Adicional se podrá establecer por tipo de producto, servicio, periodo de tiempo y/o cualquier otro criterio que determine Abastecedora Lumen, S.A. de C.V.
+    p: strong Beneficios Lumen:
+    p Son las prestaciones en bienes o servicios a que tienen derecho de elegibilidad los Socios, en canje o redención de los Puntos Lumen o cualquier otra mecánica que decida Lumen. Mismos que podrán variar de tiempo en tiempo sin previo aviso por parte de Lumen. A Beneficios Lumen en lo sucesivo y para efectos del presente documento se le denominará indistintamente como Beneficios Lumen o como Beneficios.
+    p: strong Canje o Redención de Puntos Lumen:
+    p Es el procedimiento mediante el cual el Socio Club Lumen paga en canje o redención los Puntos Lumen acumulados en su Cuenta Club Lumen, para la obtención del Beneficio Lumen requerido.
+    p: strong Cuota de Inscripción: 
+    | Es el pago que realiza el Socio Club Lumen a Lumen por participar en El Programa y que le da derecho a ser elegible a los beneficios.
+    p: strong Pesos: 
+    | Para efectos del presente documento, se considerará como la referencia a la moneda de uso legal dentro de la República Mexicana.
+    p: strong Canales de venta válidos para la acumulación de Puntos Lumen:
+    p Son los canales de venta autorizados para la acumulación de Puntos Lumen. Por el momento, serán tales canales las sucursales Lumen en la República Mexicana. Abastecedora Lumen, S.A. de C.V. tiene el derecho de modificar los canales de venta elegibles de tiempo en tiempo y sin previo aviso.
+    p: strong Canales de venta válidos para la redención de Puntos Lumen:
+    p Son los canales de venta autorizados para la redención de Puntos Lumen. Por el momento, serán tales canales las sucursales Lumen en la República Mexicana. Abastecedora Lumen, S.A. de C.V. tiene el derecho de modificar los canales de venta elegibles de tiempo en tiempo y sin previo aviso.
+    p: strong Acuerdo de confidencialidad:
+    p La información de cada Socio se manejará con carácter de confidencial exclusivamente para que reciba información y beneficios del programa Club Lumen.
+    p: strong TÉRMINOS Y CONDICIONES DEL PROGRAMA CLUB LUMEN
+    p: strong De la compra de la Tarjeta Club Lumen:
+    p 1. Para poder hacer uso de la Tarjeta Club Lumen y comience a acumular Puntos desde su primer compra, es necesario que el cliente cubra el costo vigente de la Tarjeta en cualquier sucursal Lumen de la República Mexicana, en el sitio de internet del programa o en el teléfono del programa.
+    p  2. Sólo aplicará en la compra de productos o servicios ofrecidos en Sucursales lumen.
+    p  3. Dentro de los productos y servicios ofrecidos por Lumen existen productos que NO bonifican Puntos y estos podrán ser modificados sin previo aviso. En este sentido, las operaciones de adquisición de bienes y/o servicios que se encuentran exentas de otorgar los beneficios del El Programa son:
+    ul
+        li Computadoras de escritorio Apple
+        li Computadoras de escritorio PC
+        li Computadoras portátiles Apple
+        li Computadoras portátiles PC
+        li Impresoras
+        li Monitores 
+        li Monitores Apple
+        li Multifuncionales
+        li Plotters
+        li Reproductores MP3
+        li Scanners
+        li Servicio de Termoplanchado y doblado de planos
+        li Tabletas 
+        li Tabletas Ipad
+        li Tarjeta Aula 365
+        li Tarjeta MS Office 2010 Home & Business
+        li Tarjeta MS Office Home & Student
+        li Tarjetas App Store
+        li Tarjetas de Puntos XBOX
+        li Tarjetas de Regalo California Pizza Chicken
+        li Tarjetas de Regalo Chillis México
+        li Tarjetas de Regalo Starbucks México
+        li Tarjetas Itunes
+        li Tarjetas Paysafecard
+        li Tarjetas Todito Cash
+        li Tarjetas XBOX Gold Card
+        li Tarjetas y recargas de servicios Televia
+        li Recargas telefónicas
+        li Pago de servicios a cuenta de terceros
+    p 4. El cliente deberá consultar el porcentaje de bonificación de cada producto participante dentro del programa.
+    p 5. La compra de la Tarjeta Club Lumen no acumula puntos por su compra.
+    p 6. La Acumulación de Puntos a realizar será el monto equivalente al 1% (uno por ciento) del total de la operación relativa a la venta de productos y/o servicios participantes sin que se tome en cuenta para estos efectos el Impuesto al Valor Agregado ni cualquier otro derecho o impuesto que se cobre o cargue al cliente en virtud de la transacción correspondiente.
+    p 7. La acumulación de Puntos podrá realizarse presentando, previamente a que la operación se perfeccione, la tarjeta Club Lumen; en caso de no presentar la tarjeta Club Lumen se podrá realizar la bonificación indicando el Nombre y los últimos cuatro dígitos de un número de teléfono que haya registrado en El Programa. En caso de que la tarjeta no cuente con datos registrados no se podrá realizar la bonificación de los Puntos sin presentar la tarjeta físicamente.
+    p: strong De la compra de Puntos Lumen:
+    p 9. El Socio del Programa Club Lumen y el cliente de Tiendas Lumen podrán realizar la compra de Puntos Lumen en cualquier sucursal Lumen.
+    p 10. Los Puntos adquiridos podrán ser bonificados a la Tarjeta Club Lumen que el interesado registre durante el proceso de compra.
+    p 11. Por cada $1.00 peso que el cliente pague se bonificará un Punto Lumen en la Tarjeta deseada.
+    p 12. Para el caso de devoluciones, se restarán del saldo de la cuenta del Socio los Puntos Lumen que se hayan acumulado o bonifcado en virtud de la compra correspondiente al producto motivo de la devolución.
+    p 13. Para poder hacer el canje de Puntos Lumen es indispensable que el Socio Club Lumen registre sus datos en la página de internet, o llamando al Centro de Atención a Clientes, ambos operados y administrados por Operadora ROFERI, S.A. de C.V.
+    p 14. Los Puntos acumulados podrán ser utilizados únicamente para el pago de determinados productos y/o servicios ofrecidos por Lumen.
+    p 15. El valor de cada Punto Lumen acumulado en la cuenta del Socio será de $1.00 peso y podrá ser utilizado únicamente en la compra de determinados productos y/o servicios ofrecidos por Lumen.
+    p 16. Por ningún motivo el Socio Club Lumen podrá canjear sus Puntos acumulados por dinero en efectivo.
+    p 17. El Canje de Puntos no es una forma de pago, por lo que la expedición de facturas se realizará únicamente sobre el monto pagado en Efectivo y/o Tarjetas de crédito y/o débito.
+    p: strong De la Vigencia:
+    p 18. La vigencia de los Puntos Lumen es de 12 meses de acuerdo al mes en el que fue realizada la acumulación de los Puntos; por ejemplo, los Puntos acumulados en el mes de Mayo del año en curso vencerán el primer minuto del primer día de Junio del siguiente año.
+    p 19. La vigencia de la Tarjeta Club Lumen es por tiempo indefinido.
+    p: strong De la Cancelación y Reposición de la Tarjeta Club Lumen:
+    p 20. En caso de Robo o Extravío de la Tarjeta, el Socio deberá realizar el proceso de cancelación por medio del sitio de internet o por medio del Centro de Atención Telefónica. En ese entendido, ni Operadora ROFERI, S.A. de C.V. ni Lumen serán responsables por los movimientos indebidos realizados con la Tarjeta.
+    p 21. Para la reposición de la Tarjeta el Socio deberá adquirir una nueva Tarjeta Club Lumen cubriendo el costo de reposición de la misma y solicitar el traspaso de Puntos Lumen de la tarjeta Cancelada por Robo o Extravió a la Tarjeta actual.
+    p 22. Ni Operadora Roferi S.A. de C.V. ni Lumen se hacen responsables del mal uso que se haga de la tarjeta.
+    p 23. Lumen se reserva el derecho de agregar o quitar establecimientos, productos y servicios participantes sin previo aviso; así mismo se reserva el derecho de suspender o modificar este programa en cualquier momento, previo aviso vía correo electrónico a los Socios Club Lumen para que estos puedan hacer efectivos sus Puntos acumulados.
+    p 24. El uso de la Tarjeta Club Lumen es aceptación de las reglas y condiciones del programa Club Lumen, las cuales podrán ser modificadas periódicamente sin previo aviso.
+    p 25. Lumen y Blue se reservan el derecho de suspender temporal o definitivamente a cualquier persona participante si considera que su desempeño en el Programa es inadecuado.
+    p: strong TÉRMINOS Y CONDICIONES CERTIFICADO DE REGALO LUMEN
+    p: strong De la compra del Certificado de Regalo Lumen:
+    p 26. Los Certificados de Regalo Lumen podrán ser adquiridos en cualquier sucursal Lumen de la República Mexicana, por medio del sitio de internet del programa o por el Centro de Atención Telefónica del programa mediante las formas de pago vigentes en cada canal de venta. 
+    p 27. El monto mínimo de compra de es de $50.00 pesos y el monto máximo de compra por Certificado es de $15,000.00 pesos.
+    p 28. El monto cargado en el Certificado de Regalo no podrá ser cambiado por efectivo.
+    p: strong Del uso del Certificado de Regalo Lumen:
+    p 29. El Certificado de Regalo podrá ser utilizado como forma de pago de determinados productos y/o servicios ofrecidos en tiendas Lumen.
+    p 30. El Certificado tendrá una vigencia de 24 meses a partir de la fecha de compra. Posterior a este periodo el saldo remanente perderá su valor y no podrá ser rembolsado bajo ninguna circunstancia.
+    p 31. El Certificado de regalo no es recargable.
+    p 32. El Certificado de Regalo funciona como medio de pago de determinados bienes y/o servicios ofrecidos por Lumen en beneficio del portador de la misma, por lo que en caso de robo o extravío, no se podrá reembolsar.
+    p 33. Ni Operadora ROFERI, S.A. de C.V. ni Lumen se hacen responsables del mal uso que se haga del Certificado.
+    p 34. No se podrán utilizar los Puntos Lumen ni el saldo de los Certifcados de Regalo para el pago de los siguientes bienes o servicios:
+    ul
+        li Tarjetas y recargas de servicios Televia
+        li Recargas telefónicas
+        li Pago o prepago de cualquier servicio a cuenta de terceros
+
+
+
+mixin avisodeprivacidad
+    p: strong INTRODUCCIÓN
+    p I.- Operadora ROFERI, S.A. de C.V. ha celebrado un acuerdo comercial y de prestación de servicios con Abastacedora Lumen, S.A. de C.V. (en adelante “Lumen”) en virtud del cual aquella administra, desarrolla, opera y comercializa: a) el programa de lealtad Lumen (Club Lumen); b)  el programa de puntos Lumen; y c) los certifcados de regalo canjeables por determinados bienes y servicios ofrecidos por Lumen. 
+    p II.- En ese entendido, Operadora ROFERI, S.A. de C.V. administra tanto el proceso de afililación de los miembros del programa Club Lumen, así como la plataforma de servicios que permite: a) obtener y disfrutar los beneficios de dicho programa; b) la adquisición y canje  de Puntos Lumen; y c) la adquisición y canje de Cerificados de Regalo Lumen. 
+    p III.- Asimismo, Operadora ROFERI, S.A. de C.V. administra con recusros propios la página de internet 
+        a(href='http://www.clublumen.com.mx', target='_blank') www.clublumen.com.mx
+        |  y los servicios de venta por teléfono (telemarketing) a través de los cuales se realizan las operaciones mencionadas en los puntos I y II anteriores. 
+    p: strong RESPONSABLE
+    p Operadora ROFERI, S.A. de C.V. (en adelante “Blue”), ubicada en José María Castorena 324, local 109, Colonia Cuajimalpa de Morelos, C.P. 05000, México, Distrito Federal, es la responsable del debido tratamiento y resguardo de los datos personales que son recabados de quienes desean formar parte del Programa Club Lumen, el cual permite acumular Puntos Lumen por todas las compras de productos y servicios participantes y utilizarlos como medio de pago, además de participar en promociones especiales. 
+    p: strong DATOS PERSONALES REQUERIDOS 
+    p Los datos que se requieren para crear una membresía dentro del Programa Club Lumen, son los siguientes: i) nombre completo; ii) fecha de nacimiento; iii) sexo; iv) domicilio; v) correo electrónico; vi) número de teléfono fijo; vii) número de teléfono celular o móvil; viii) nombre de la compañía que presta el servicio de telefonía celular; ix) si el titular de los datos personales recabados tiene hijos, cuántos y qué ocupación tienen; x) datos de la tarjeta bancaria que se utilizará para activar la membresía del Programa Club Lumen: nombre del tarjetahabiente, tipo de tarjeta (Visa, Mastercard, American Express), número de tarjeta, fecha de expiración, código de seguridad; y xi) datos de facturación de personas físicas: nombre, Registro Federal de Contribuyentes, correo electrónico y domicilio.
+    p: strong FINALIDADES DEL TRATAMIENTO DE LOS DATOS PERSONALES 
+    p Los datos arriba listados se solicitan para activar, registrar, operar y administrar: a) la membresía o afiliación al Programa Club Lumen; b) la adquisición y canje de Puntos Lumen realizada por los miembros del Programa Club Lumen, ya sea a través de la página de Internet 
+        a(href='http://www.clublumen.com.mx', target='_blank') www.clublumen.com.mx
+        | , de los kioskos dispuestos para ese efecto en las tiendas Lumen, o bien vía telefónica (telemarketing);  c) la adquisición y canje de Certificados de Regalo Lumen. 
+    p De la misma manera, los datos obtenidos serán conservados para la creación y generación de la base de datos de los clientes de los bienes y servicios ofrecidos por Blue. 
+    p: strong TRANSFERENCIA DE LOS DATOS PERSONALES 
+    p Los datos personales que se recaben serán transferidos a Lumen para: 
+    p: strong a) configurar la base de datos de los clientes de Lumen; 
+    p: strong b) evaluar la calidad de los productos y servicios de Lumen; 
+    p: strong c) realizar análisis estadísticos y de Mercado;  
+    p: strong d) realizar campañas publicitarias (vía telefónica y por medios electrónicos) para la comercialización de productos y servicios de Lumen; 
+    p: strong e) informar a los miembros del Programa Club Lumen sobre todos los beneficios que éste les ofrece en la compra de productos y prestación de servicios ofrecidos por Lumen; y 
+    p: strong f) facturar los bienes y servicios ofrecidos por Lumen.
+    p Exceptuando lo precisado en el párrafo anterior, a ninguna otra persona o entidad distinta de Lumen, le serán transferidos los datos personales recabados.
+    p Cabe señalar que Blue suscribió un contrato de confidencialidad con Lumen, asegurando así el debido tratamiento y resguardo de los datos personales recabados. 
+    p: strong DERECHOS ARCO (Acceso, Rectificación, Cancelación y Oposición) y REVOCACIÓN del consentimiento para el tratamiento de los datos.
+    p Para cualquier acceso, rectificación, cancelación, oposición o revocación en el manejo de los datos personales obtenidos, Blue pone a su disposición el correo electrónico 
+        a(href='mailto:info@clublumen.com.mx') info@clublumen.com.mx
+        |  y los teléfonos (55) 8164-7300 y 01-800-841-7500 del Departamento de Atención a Clientes, en términos del Capítulo IV de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, artículo 21 de su Reglamento, así como de las disposiciones contenidas en los Lineamientos del Aviso de Privacidad emitidas por la Secretaría de Economía.
+    p Para estos efectos, el usuario deberá enviar a dicha dirección de correo electrónico un escrito en el que señale, de manera clara y expedita, qué datos y en qué medida desea tener acceso, o bien, rectificar, cancelar, oponerse o revocar su consentimiento al tratamiento de los mismos, adjuntando la documentación que sustente su petición. 
+    p Una vez que sea recibida la petición debidamente requisitada en la cuenta de correo electrónico ya señalada, Blue contará con un plazo de veinte días (mismos que podrán ser ampliados por un periodo igual, dependiendo de las circunstancias del caso) para resolver la petición correspondiente. 
+    p De resultar procedente la petición del usuario, Blue deberá cumplir con la misma en un plazo de quince días contados a partir de la emisión de la resolución correspondiente.
+    p: strong OPCIONES Y MEDIOS PARA LIMITAR EL USO O DIVULGACIÓN DE LOS DATOS PERSONALES
+    p En caso de que el titular decida limitar el uso o divulgación de los datos personales recabados, Blue pone a su disposición la dirección de correo electrónico info@clublumen.com.mx, para que así lo manifieste de manera expresa. 
+    p: strong CAMBIOS AL AVISO DE PRIVACIDAD
+    p En caso de realizar modificaciones a nuestro Aviso de Privacidad, enviaremos un correo electrónico a los titulares de los datos personales recabados, para informarles sobre dichos cambios, mismo que incluirá el vínculo para consultarlos.
+    p: strong CONSENTIMIENTO DEL USUARIO
+    p Estoy de acuerdo con los términos y condiciones de privacidad y protección de datos establecidos en el presente Aviso de Privacidad, incluidas la finalidad, tratamiento y transferencia de dichos datos, por lo que manifiesto mi consentimiento expreso e inequívoco para tales efectos.
+
+mixin faqs
+    ul.accordion(data-accordion="")
+        li.accordion-item.is-active(data-accordion-item="")
+            a(href="#").accordion-title ¿Qué es Club Lumen®?
+            div.accordion-content(data-tab-content="")
+                p Para Lumen® lo más importante son sus clientes, es por eso que con el afán de seguir promoviendo tus ganas de crear y materializar tus ideas hemos creado Club Lumen®, el Programa de Lealtad diseñado especialmente para ti con el objetivo de brindarte beneficios para que sigas desarrollando tu creatividad. 
+                p En Club Lumen® podrás Acumular Puntos Lumen® por las compras que realices en cualquiera de nuestras sucursales y utilizarlos como forma de pago; además de participar en Promociones Especiales.
+        
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿En dónde puedo adquirir la Tarjeta Club Lumen®?
+            div.accordion-content(data-tab-content="")
+                p Podrás comprar la Tarjeta Club Lumen® en cualquier sucursal lumen de la República Mexicana.
+        
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Cómo puedo Acumular Puntos Lumen®?
+            div.accordion-content(data-tab-content="")
+                p En cada compra recibirás el 1% (uno por ciento) sobre el valor total de los productos y servicios participantes antes de IVA en Puntos Lumen®. 
+                p Para acumular Puntos Lumen® es necesario presentar tu Tarjeta al momento de realizar la compra. 
+                p En caso de que no tengas tu Tarjeta al momento de una compra podrás acumular Puntos Lumen® en tu cuenta proporcionando tu usuario y los 4 últimos números de teléfono que diste de alta al momento de Registrar tus datos. Si no haz registrado los datos de tu Tarjeta no podrás acumular Puntos Lumen® sin mostrar la Tarjeta.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Podré Acumular Puntos por todas mis compras?
+            div.accordion-content(data-tab-content="")
+                p No todos los productos y servicios ofrecidos en nuestras sucursales Bonifican Puntos Lumen®. Los productos que NO bonifican puntos son los siguientes: 
+                .grid-x
+                    .cell.large-6: ul 
+                        li Computadoras de escritorio Apple
+                        li Computadoras de escritorio PC
+                        li Computadoras portátiles Apple
+                        li Computadoras portátiles PC
+                        li Impresoras
+                        li Monitores
+                        li Monitores Apple
+                        li Multifuncionales
+                        li Plotters
+                        li Reproductores MP3
+                        li Scanners
+                        li Servicio de Termoplanchado y doblado de planos
+                        li Tabletas
+                        li Tabletas Ipad
+                    .cell.large-6: ul 
+                        li Tarjeta Aula 365
+                        li Tarjeta MS Office 2010 Home & Business
+                        li Tarjeta MS Office Home & Student
+                        li Tarjetas App Store
+                        li Tarjetas de Puntos XBOX
+                        li Tarjetas de Regalo California Pizza Chicken
+                        li Tarjetas de Regalo Chillis México
+                        li Tarjetas de Regalo Starbucks México
+                        li Tarjetas Itunes
+                        li Tarjetas Paysafecard
+                        li Tarjetas Todito Cash
+                        li Tarjetas XBOX Gold Card
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Para qué sirve la Compra de Puntos Lumen®?
+            div.accordion-content(data-tab-content="")
+                p La compra de Puntos Lumen® se utiliza para recargar saldo a tu Tarjeta o a la de alguna otra persona que tu decidas. 
+                p Por cada $1.00 peso que pagues se Acumulará a la tarjeta indicada 1 Punto Lumen®.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Para qué utilizo mis Puntos Lumen®?
+            div.accordion-content(data-tab-content="")
+                p Los Puntos Lumen® que tengas Acumulados en tu cuenta podrás utilizarlos como forma de pago por productos y servicios ofrecidos en nuestras sucursales. Podrás cubrir el monto total o parcial de tu compra con Puntos Lumen®. Consulta los productos y servicios participantes. 
+                p Para poder utilizar tus Puntos como forma de pago es indispensable que Registres los datos de tu Tarjeta en el sitio de internet del Programa o llamando a nuestro Centro de Atención Telefónica.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Cuánto valen mis Puntos Lumen®?
+            div.accordion-content(data-tab-content="")
+                p Cada Punto Lumen® que tengas en tu cuenta equivale a $1.00 peso.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Puedo cambiar mis Puntos por dinero?
+            div.accordion-content(data-tab-content="")
+                p No, los Puntos Lumen® únicamente pueden ser utilizados como forma de pago en Lumen® y no podrán ser cambiados por dinero.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Qué vigencia tiene mi tarjeta Club Lumen®?
+            div.accordion-content(data-tab-content="")
+                p Tu Tarjeta Club Lumen® no tiene una vigencia, por lo cual no mantiene una anualidad.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Qué vigencia tienen mis Puntos Lumen®?
+            div.accordion-content(data-tab-content="")
+                p La vigencia de los Puntos Lumen® es de 12 meses de acuerdo al mes en el que fue realizada la acumulación de los Puntos; por ejemplo, los Puntos acumulados en el mes de Mayo del año en curso vencerán el primer minuto del primer día de Junio del siguiente año.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Qué debo hacer en caso de Robo o Extravío de mi Tarjeta?
+            div.accordion-content(data-tab-content="")
+                p Si perdiste o te robaron tu Tarjeta Club Lumen® deberás realizar la Cancelación de la misma iniciando sesión en el sitio de internet del Programa utilizando tu Usuario y Contraseña; o también podrás realizar la Cancelación llamando a nuestro Centro de Atención Telefónica. 
+                p Una vez que tu tarjeta haya sido Cancelada nadie podrá hacer uso de tus Puntos.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Cómo puedo solicitar una Reposición de mi Tarjeta?
+            div.accordion-content(data-tab-content="")
+                p Una vez que tu Tarjeta haya sido Cancelada por Robo o Extravío deberás acudir a cualquiera de nuestras sucursales y adquirir una nueva Tarjeta Club Lumen® cubirendo el costo de reposición de $10.00 pesos y solicitar en ese momento el traspaso de Puntos Lumen de la tarjeta Cancelada por Robo o Extravió a la nueva Tarjeta.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Qué son los Certificados de Regalo Lumen®?
+            div.accordion-content(data-tab-content="")
+                p Los Certificados de Regalo Lumen® son monederos electrónicos que podrás adquirir en cualquier sucursal Lumen®. El monto mínimo de compra de un Certificado es de $50.00 pesos y el monto máximo es de $15,000.00 pesos.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Cuándo se acabe el saldo del Certificado de Regalo, puedo realizar una nueva recarga?
+            div.accordion-content(data-tab-content="")
+                p No, los Certificados de Regalo no son recargables.
+
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Qué vigencia tienen los Certificados de Regalo?
+            div.accordion-content(data-tab-content="")
+                p El Certificado tiene una vigencia de 24 meses a partir de la fecha de compra. Una vez transcurrido este periodo de tiempo, el saldo remanente perderá su valor y no podrá ser rembolsado.
+
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Qué diferencia hay entre una Tarjeta Club Lumen® y un Certificado de Regalo Lumen®?
+            div.accordion-content(data-tab-content="")
+                p La Tarjeta Club Lumen® pertenece al Programa de Lealtad de tiendas Lumen® en el cual acumulas Puntos por tus compras. El Certificado de Regalo es un monedero electrónico en el que abonas una cantidad determinada en dinero para utilizarlo como forma de pago.
+        li.accordion-item(data-accordion-item="")
+            a(href="#").accordion-title ¿Las compras de Mayoreo Generan Puntos?
+            div.accordion-content(data-tab-content="")
+                p No, todas las compras realizadas por mayoreo no participan dentro del programa Club Lumen.
+
+mixin banners
+    div.slick#inicio
+        div: img(src="site/img/banners/club-lumen-1.jpg")
+        div: img(src="site/img/banners/club-lumen-2.jpg")
+        div: img(src="site/img/banners/club-lumen-3.jpg")
+        div: img(src="site/img/banners/club-lumen-4.jpg")
+        div: img(src="site/img/banners/club-lumen-5.jpg")
+
+mixin footer
+    div.reveal.large(data-reveal)#reveal-aviso
+        button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+        h2 Aviso de privacidad
+        +avisodeprivacidad
+        .text-right: button(data-close="").button.hollow Cerrar ventana
+    div.reveal.large(data-reveal)#reveal-terminos
+        button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+        h2 Términos y condiciones
+        +terminosycondiciones
+        .text-right: button(data-close="").button.hollow Cerrar ventana
+    div.reveal(data-reveal)#reveal-faqs
+        button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+        h2 Preguntas frecuentes
+        +faqs
+        .text-right: button(data-close="").button.hollow Cerrar ventana
+
+
+    footer
+      .top-bar
+        .top-bar-left
+          ul.menu
+            li.menu-text COPYRIGHT © 2017
+            li: a(href="reporte-robo.html") Reporte por robo o extravío
+            li: a(data-open="reveal-faqs") Preguntas frecuentes
+            li: a(data-open="reveal-terminos") Términos y condiciones
+            li: a(data-open="reveal-aviso") Aviso de Privacidad
+        .top-bar-right
+          a(href="https://www.bluepureloyalty.com/" target="_blank"): img(src="site/img/poweredbyblue.png")
+    footer.blue.text-center
+        a(href="http://www.bluepureloyalty.com/" target="_blank")
+            img(src="site/img/blue.png", alt="Blue.mx")
+            div blue.mx
+
+mixin roboextravio(tarjeta)
+    p Al dar clic en el botón "Continuar" se cancelará tu Tarjeta Club Lumen y no podrá ser utilizada para bonificar ni canjear Puntos Club Lumen
+    if tarjeta
+        p * Número de Tarjeta Club Lumen: #[strong 2583 5863 0123 7217]
+    else
+        label * Número de Tarjeta Club Lumen
+        input(type="text")
+    form
+    label #[strong Motivo de la cancelación: ]
+        select
+                option Extravío
+                option Robo
+    .help-text * Si olvidaste el Número de tu Tarjeta Club Lumen, recuerda que puedes encontrarlo en el correo de bienvenida que recibiste al registrar tus datos. También podrás encontrarlo en la sección de Mi Cuenta iniciando sesión con tu usuario y contraseña o llamar al Tel. 01-800-841-7500 / (55) 8164-7300 de Lunes a Viernes de 09:00 a.m. a 06:00 p.m. hora del Centro de México.
+
+    .text-right: button(type="submit").button.alert Continuar   

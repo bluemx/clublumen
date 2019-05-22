@@ -1,0 +1,241 @@
+include _mixins
+doctype html
+html(lang="en").no-js
+  head
+    +head
+  body
+    +menu(false, false)
+    +banners
+
+    
+    section.mainContainer#iniciar-sesion
+      .grid-container
+        
+        .grid-x.grid-padding-x.grid-margin-x
+          .cell.medium-6.registra-callto
+            .grid-x.grid-padding-x
+              .cell.small-4: img(src="site/img/registra-tu-tarjeta.png", alt="Registra tu tarjeta").margin-vertical-1
+              .cell.auto
+                p.h1 REGISTRA
+                p.h2 tu tarjeta
+            a(data-smooth-scroll data-offset="280" href="#activacion").button.expanded Crear cuenta
+          form(action="acceso.html").cell.medium-6.login-callto
+            p.h5 Ingresa a tu cuenta
+            input(type="text" name="login_user" placeholder="Usuario")
+            input(type="password" name="login_pass" placeholder="Contraseña")
+            button(type="submit").button.expanded Iniciar sesión
+            a(data-open="recover-password").help-text.olvidaste-help ¿Olvidaste tu contraseña?
+          
+          div.reveal(data-reveal)#recover-password
+            button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+            h2 Recuperar contraseña
+            p Seleccione la opción para recuperar su contraseña
+            button(data-open="recover-password-by-mail").button.expanded Correo electrónico
+            p En caso de no recordar su nombre de usuario o su correo electrónico favor de comunicarse al Tel: 01-800-841-7500 / (55) 8164-7300 de Lunes a Viernes de 09:00 a.m. a 06:00 p.m. hora del Centro de México
+          div.reveal(data-reveal)#recover-password-by-user
+            button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+            h2 Recuperar contraseña
+              form(action="#")
+                input(type="text" placeholder="Ingrese su nombre de usuario" required)
+                .grid-x
+                  .cell.medium-6: button(data-open="recover-password").button Regresar
+                  .cell.medium-6.text-right: button(type="submit").button Recuperar contraseña
+          div.reveal(data-reveal)#recover-password-by-mail
+            button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+            h2 Recuperar contraseña
+              form(action="#")
+                input(type="text" placeholder="Correo electrónico" required)
+                input(type="text" placeholder="Número de tarjeta" required)
+                .grid-x
+                  .cell.medium-6: button(data-open="recover-password").button Regresar
+                  .cell.medium-6.text-right: button(type="submit").button Recuperar contraseña
+
+
+    
+    section.mainContainer
+      h2.col1 ¿Qué es?
+
+        //.icon.hide-for-small-only: img(src="site/img/quees.png")
+      .pattern.p4: .grid-container
+        .grid-x.grid-padding-x.grid-margin-x(data-magellan-target="que-es")#que-es
+          .cell.medium-6
+            p Para #[strong Lumen] lo más importante son sus clientes, es por eso que con el afán de seguir promoviendo tus ganas de crear y materializar tus ideas hemos creado #[strong Club Lumen], el Programa de Lealtad diseñado especialmente para ti con el objetivo de brindarte beneficios para que sigas desarrollando tu creatividad.
+            img(src="site/img/clublumen.png").img-float-left
+            p En #[strong Club Lumen] podrás acumular #[strong.blue Puntos Lumen] por todas las compras de productos y servicios participantes que realices en cualquiera de nuestras sucursales y utilizarlos como forma de pago; además de participar en Promociones Especiales. 
+          .cell.medium-6
+            .callout.primary.text-center
+              img(src="site/img/elpuntoescrear.png")
+              //h4 En Club Lumen® el punto es crear. 
+              //img(src="site/img/puntoslumen.png").icon
+
+    //section.mainContainer
+      h2.col2 ¿Cómo funciona?
+        //.icon.hide-for-small-only: img(src="site/img/comofunciona.png")
+      .pattern.p1: .grid-container
+        .grid-x.grid-padding-x.grid-margin-x(data-magellan-target="como-funciona")#como-funciona
+          .cell.medium-6
+              p #[span.comopunto 1] Adquiere tu #[strong.blue Tarjeta Club Lumen] por #[strong $200.00 pesos] en cualquiera de nuestras sucursales.
+              p #[span.comopunto 2] Registra tus datos en este sitio de internet o llamando a los teléfonos 01-800-841-7500 o 8164-7300.
+              p #[span.comopunto 3] Acumula #[strong.blue Puntos Lumen] por todas las compras que realices en nuestras sucursales.
+              p #[span.comopunto 4] Utiliza tus Puntos Lumen como forma de pago parcial o total en todas las compras que realices en tiendas #[strong Lumen].
+             
+          .cell.medium-6
+            img(src="site/img/meses.png").img-float-right
+            p La vigencia de los #[strong Puntos Lumen®] es de 12 meses de acuerdo al mes en el que fue realizada la Acumulación de los Puntos.
+            p Para mayor información consulta la sección de #[a(data-open="reveal-terminos") Términos y Condiciones] y #[a(data-open="reveal-aviso") Aviso de Privacidad].
+
+    section.mainContainer
+      h2.col3 Registro
+        //.icon.hide-for-small-only: img(src="site/img/activacion.png")
+      .pattern.p2: .grid-container
+        .grid-x.grid-padding-x.grid-margin-x(data-magellan-target="activacion")#activacion
+          .cell.medium-6
+            p En esta sección podrás registrar tu #[strong.blue Tarjeta Club Lumen®] y tus datos personales para que puedas utilizar los Puntos Lumen® acumulados en tu cuenta como forma de pago en nuestras sucursales.
+            p Recuerda que no podrás hacer uso de tus #[strong Puntos Lumen®] si tu Tarjeta no está registrada.
+            //img(src="site/img/usuario.png").img-float-left
+            //p Además, si registras tu #[strong.blue Tarjeta Club Lumen®] podrás Acumular tus Puntos aunque no lleves tu tarjeta contigo proporcionando tu nombre de Usuario y los últimos 4 números de tu teléfono registrados.
+          .cell.medium-6
+            form(action="#")
+              label Ingresa los 16 números de la #[strong Tarjeta Club Lumen]:
+              .input-group
+                input.input-group-field(type="number")
+                .input-group-button
+                  button(type="button" data-open="registrar-tarjeta").button Validar tarjeta
+              span
+                img(src="site/img/numeros-tarjeta.png")
+            
+            +registrarTarjeta(false)
+
+
+    section.mainContainer
+      h2.col4 Promociones
+            //.icon.hide-for-small-only: img(src="site/img/promo.png")
+      .pattern.p3: .grid-container
+        .grid-x.grid-padding-x.grid-margin-x(data-magellan-target="promociones")#promociones
+          
+          .cell.large-4#banners.text-center
+            a(href="https://www.lumen.com.mx/260708LAPTOP-ASUS-UX360UAK" target="_blank").banner: img(src="site/img/promos/promo-1.jpg")
+            a(href="https://www.lumen.com.mx/256561TELEFONO-CELULAR-TP-LINK-X1-MAX-ORO" target="_blank").banner: img(src="site/img/promos/promo-2.jpg")
+            a(href="https://www.lumen.com.mx/246418estuche-de-acuarelas-schmincke-horadam-con-8-pastillas" target="_blank").banner: img(src="site/img/promos/promo-3.jpg")
+            a(href="https://www.lumen.com.mx/272942MARCADOR-COPIC-SKETCH-FLORAL-FAVORITES-I-PAQUETE-CON-6" target="_blank").banner: img(src="site/img/promos/promo-4.jpg")
+          .cell.large-8.text-center
+            div.slick
+              div: img(src="site/img/promo_120713.jpg").oribt-image
+            
+
+    section.mainContainer     
+      h2.col5 Comprar puntos
+        //.icon.hide-for-small-only: img(src="site/img/promos/club-lumen-promo.jpg") 
+      .pattern.p4: .grid-container
+        .grid-x.grid-padding-x.grid-margin-x(data-magellan-target="comprar-puntos")#comprar-puntos
+          .cell
+            
+          .cell.large-6
+            p Realiza la compra de #[strong Puntos Club Lumen] en cualquiera de nuestras sucursales y acumúlalos en la Tarjeta Club Lumen que desees.
+            p Para hacerlo únicamente deberás indicar el número de 16 dígitos de la #[strong.blue Tarjeta Club Lumen] y el monto en #[strong Puntos Club Lumen] que deseas adquirir.
+          .cell.large-4.large-offset-1
+            .callout.primary.text-center
+              h4 Por cada peso se acumulará un #[strong Punto Club Lumen] en la #[strong.blue Tarjeta Club Lumen] que indiques.
+              img(src="site/img/unpesounpunto.png")
+              //img(src="site/img/peso.png").icon
+    
+    .mainContainer
+      .grid-x
+        .cell.large-6: h2.col6 Certificado de regalo
+        .cell.large-6: .show-for-large: h2 Consultar saldo
+      .pattern.p1: .grid-container
+        .grid-x.grid-padding-x.grid-margin-x(data-magellan-target="certificado-de-regalo")#certificado-de-regalo         
+          .cell.large-6
+            img(src="site/img/regalo.png").img-float-left
+            p Porque crear es un regalo, ponemos a tu disposición #[strong Certificados de Regalo Lumen®] para que los obsequies a quien tú quieras. 
+            p Adquiere tus #[strong Certificados de Regalo Lumen®] en cualquiera de nuestras sucursales a partir de $50.00 pesos. 
+            .card
+              .card-section
+                ul
+                  li Los #[strong Certificados de Regalo] sólo podrán ser utilizados como forma de pago por productos y servicios ofrecidos en #[strong.blue Tiendas Lumen®] de la República Mexicana y no podrán ser canjeados por dinero en efectivo.
+                  li Tendrán una validez de 24 meses a partir de la fecha de activación, posterior a este periodo, el saldo remanente en la tarjeta perderá su valor y no podrá ser rembolsado.
+                  li #[strong Lumen®] no se hará responsable en caso de robo o extravío, ni tampoco por el mal uso de los mismos.
+                  li Los Certificados de Regalo NO son recargables.
+                  li Monto mínimo de compra $ 50.00 pesos.
+                  li Monto máximo de compra $15,000.00 pesos.
+
+          .cell.large-6
+            .hide-for-large: h2.col7 Consultar saldo
+            
+            form
+              label Ingresa el Código de barras de 13 dígitos que se encuentra en la parte posterior del #[strong.blue Certificado de Regalo Lumen®]
+              .input-group
+                input.input-group-field(type="number")
+                .input-group-button
+                  button(type="button" data-open="consulta-de-saldo").button Consultar
+            div.reveal(data-reveal)#consulta-de-saldo
+              button(type="buton" data-close="").close-button: span(aria-hidden="true") &times;
+              h2 Consulta de saldo 
+              p El saldo de su Certificado de Regalo Lumen es de #[strong $20].
+              p Canjéalos ahora en <a href="https://www.lumen.com.mx/" target="_blank">https://www.lumen.com.mx/</a>
+
+            span
+              img(src="site/img/tarjeta-certificado.jpg")
+    .mainContainer
+      h2.col8 Contacto
+        //.icon.hide-for-small-only: img(src="site/img/contacto.png")
+      .pattern.p2: .grid-container
+        .grid-x.grid-padding-x.grid-margin-x(data-magellan-target="contacto")#contacto
+            
+          .cell.large-12
+            form
+              .grid-x.grid-margin-x
+                .cell.medium-4
+                  label 
+                    | Nombre(s)
+                    input(type="text")
+                .cell.medium-4
+                  label 
+                    | Apellido Paterno
+                    input(type="text")
+                .cell.medium-4
+                  label 
+                    | Apellidos Materno
+                    input(type="text")
+                .cell.medium-4
+                  label 
+                    | Teléfono
+                    input(type="text")
+                .cell.medium-4
+                  label 
+                    | Correo electrónico
+                    input(type="email" required)
+                .cell.medium-4
+                  label 
+                    | Confirmar correo electrónico
+                    input(type="email" required)
+                .cell.medium-8
+                  label 
+                    | Mensaje
+                    textarea
+                .cell.medium-4
+                  label
+                    input(type="checkbox")
+                    | He leído y estoy de acuerdo con el aviso de privacidad 
+
+                  button(type="submit").button Enviar
+                  p.help-text Recibirá una copia por correo electrónico de su comentario.
+
+
+
+
+        
+
+    +suscribe
+    
+    +footer
+
+    +scripts
+
+
+
+    
+
+
+
+    

@@ -1,0 +1,34 @@
+include _mixins
+doctype html
+html(lang="en").no-js
+  head
+    +head
+  body
+    +menu(true, false)
+    +banners
+    
+    +registroExitoso
+
+    
+        
+    
+        
+
+    +suscribe
+    
+    +footer
+
+    +scripts
+
+    script.
+        $(document).ready(function(){
+            $('#registro-exitoso').foundation('open');
+        });
+
+
+
+    
+
+
+
+    

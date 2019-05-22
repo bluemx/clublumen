@@ -1,0 +1,34 @@
+include _mixins
+doctype html
+html(lang="en").no-js
+  head
+    +head
+  body
+    +menu(true, false)
+    +banners
+    
+    section.mainContainer
+      h2.col1 Reporte por robo o extravío
+
+        //.icon.hide-for-small-only: img(src="site/img/quees.png")
+      .pattern.p4: .grid-container
+        .grid-x.grid-padding-x.grid-margin-x
+          .cell.medium-6.medium-offset-3
+            +roboextravio(false)
+    
+    
+        
+
+    +suscribe
+    
+    +footer
+
+    +scripts
+
+
+
+    
+
+
+
+    
