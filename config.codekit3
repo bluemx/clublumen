@@ -9,6 +9,13 @@
 	],
 "creatorBuild": "26667",
 "files": {
+	"\/.gitattributes": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/.gitattributes",
+		"oF": 0
+		},
 	"\/_mixins.pug": {
 		"cB": 0,
 		"cOD": 1,
@@ -33,27 +40,6 @@
 		"oAP": "\/acceso.html",
 		"oF": 0,
 		"oS": 0
-		},
-	"\/ClubLumen-16Mayo2019-v2.zip": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/ClubLumen-16Mayo2019-v2.zip",
-		"oF": 0
-		},
-	"\/ClubLumen-16Mayo2019.zip": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/ClubLumen-16Mayo2019.zip",
-		"oF": 0
-		},
-	"\/CNAME": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/CNAME",
-		"oF": 0
 		},
 	"\/favicon.png": {
 		"ft": 32768,
