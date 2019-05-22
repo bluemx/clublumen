@@ -375,7 +375,7 @@ strong.blue {
     text-align: right;
   }
 }
-.registra-callto .cell {
-  min-height: 1px;
+.registra-callto img {
+  max-heigt: 140px;
 }
 /*# sourceMappingURL=style.css.map */
