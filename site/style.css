@@ -381,4 +381,56 @@ strong.blue {
 .logo-img {
   max-height: 45px;
 }
+.slick-slide img {
+  width: 100%;
+}
+.top-bar {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sticky {
+  background: #02ACE0;
+}
+#mainMenu {
+  box-shadow: none;
+}
+#acceso-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#acceso-tabs li.tabs-title {
+  width: 25%;
+  min-width: 180px;
+  text-align: center;
+  margin: 6px 0;
+}
+#acceso-tabs li.tabs-title a {
+  font-size: 1.2rem;
+}
+#acceso-tabs li.tabs-title a strong {
+  display: block;
+  font-size: 1.8rem;
+}
+#acceso-tabs li.tabs-title.is-active a {
+  background: #FCB829;
+  color: #0254A0;
+}
+.saldoInicial {
+  margin-top: 16px;
+  background: #f5f5f5;
+  margin-bottom: -120px;
+  padding: 20px;
+  text-align: center;
+}
+.saldoInicial .pts {
+  font-weight: bold;
+  color: #ED1B2D;
+}
+@media (max-width: 1024px) {
+  .saldoInicial {
+    margin-top: 0;
+  }
+}
 /*# sourceMappingURL=style.css.map */

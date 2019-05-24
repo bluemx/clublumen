@@ -41,6 +41,20 @@
 		"oF": 0,
 		"oS": 0
 		},
+	"\/clublumen-2019mayo23.zip": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/clublumen-2019mayo23.zip",
+		"oF": 0
+		},
+	"\/clublumen-2019mayo24.zip": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/clublumen-2019mayo24.zip",
+		"oF": 0
+		},
 	"\/favicon.png": {
 		"ft": 32768,
 		"iS": 1501,
@@ -162,13 +176,13 @@
 		},
 	"\/site\/img\/banners\/club-lumen-1.jpg": {
 		"ft": 16384,
-		"iS": 1712323,
+		"iS": 102929,
 		"jF": 0,
 		"oA": 0,
 		"oAP": "\/site\/img\/banners\/club-lumen-1.jpg",
 		"oF": 0,
 		"oIPL": 0,
-		"opt": 1,
+		"opt": 0,
 		"q": 100
 		},
 	"\/site\/img\/banners\/club-lumen-2.jpg": {
@@ -184,13 +198,13 @@
 		},
 	"\/site\/img\/banners\/club-lumen-3.jpg": {
 		"ft": 16384,
-		"iS": 104928,
+		"iS": 114473,
 		"jF": 0,
 		"oA": 0,
 		"oAP": "\/site\/img\/banners\/club-lumen-3.jpg",
 		"oF": 0,
 		"oIPL": 0,
-		"opt": 1,
+		"opt": 0,
 		"q": 100
 		},
 	"\/site\/img\/banners\/club-lumen-4.jpg": {
@@ -410,17 +424,6 @@
 		"oIPL": 0,
 		"opt": 0,
 		"oT": 1,
-		"q": 100
-		},
-	"\/site\/img\/promo_120713.jpg": {
-		"ft": 16384,
-		"iS": 367888,
-		"jF": 0,
-		"oA": 0,
-		"oAP": "\/site\/img\/promo_120713.jpg",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
 		"q": 100
 		},
 	"\/site\/img\/promos\/club-lumen-promo.jpg": {

@@ -9,6 +9,8 @@ html(lang="en").no-js
 
     +menu(true, true)
 
+    section.saldoInicial
+      h3 Tu #[strong Saldo en Puntos Club Lumen] es #[span.pts 0.00 puntos]
     
     section.mainContainer
       h2 Bienvenido, Nombre de Usuario
@@ -16,11 +18,11 @@ html(lang="en").no-js
         .grid-x.grid-padding-x.grid-margin-x#acceso
           .cell
             ul.tabs(data-tabs)#acceso-tabs
-              li.tabs-title.is-active: a(href="#datos-personales") Datos personales
-              li.tabs-title: a(href="#datos-cuenta") Datos de cuenta
-              li.tabs-title: a(href="#saldo-puntos") Saldo en puntos
+              li.tabs-title.is-active: a(href="#datos-personales") #[strong Datos] personales
+              li.tabs-title: a(href="#datos-cuenta") #[strong Datos] de cuenta
+              li.tabs-title: a(href="#saldo-puntos") #[strong Saldo] en puntos
               //li.tabs-title: a(href="#datos-facturacion") Datos de facturación
-              li.tabs-title.reportebtn: a(href="#reporte") Reporte por robo o extravío
+              li.tabs-title: a(href="#reporte") #[strong Reporte] por robo o extravío
             .tabs-content(data-tabs-content="acceso-tabs")
               .tabs-panel.is-active#datos-personales
                 - var datos = ['Tarjeta Club Lumen', 'Nombre', 'Correo electrónico', 'Fecha de nacimiento', 'Sexo', 'Teléfonos', 'Celular', 'Compañía celular', 'Hijos', 'Ocupación', 'Tienda que frecuenta', 'Temas de interés']
